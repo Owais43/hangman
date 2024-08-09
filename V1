@@ -1,0 +1,19 @@
+def get_user_guess():
+    guess = input("Enter a letter: ").lower()
+    while not guess.isalpha() or len(guess) != 1:
+        print("Invalid input. Please enter a single letter.")
+        guess = input("Enter a letter: ").lower()
+    return guess
+
+def play_game():
+    word = get_word()
+    guessed_letters = set()
+    attempts = 6
+    print(f"The word has {len(word)} letters. You have {attempts} attempts to guess it!")
+
+    while attempts > 0:
+        display = display_word(word, guessed_letters)
+        print(f"Word: {display}")
+
+        if '_' not in display:
+            print(f"Congratulations! You guessed the word: {word}")
